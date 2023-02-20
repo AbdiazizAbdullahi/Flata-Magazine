@@ -1,0 +1,34 @@
+require_relative '../Config/environment.rb'
+
+# create some authors
+author1 = Author.new("Flata Mahamed")
+author2 = Author.new("Abdi Ahmed")
+
+# create some magazines
+magazine1 = Magazine.new("Tech Weekly", "Technology")
+magazine2 = Magazine.new("Food Monthly", "Food and Drink")
+
+# add some articles to the authors and magazines
+author2.add_article(magazine1, "The Future of AI")
+author1.add_article(magazine2, "Top 10 Recipes for Spring")
+author2.add_article(magazine1, "How to Code in Ruby")
+author2.add_article(magazine1, "The Pros and Cons of Remote Work")
+
+# find a magazine by name and get some information about it
+magazine = Magazine.find_by_name("Tech Weekly")
+if magazine
+  puts "Magazine: #{magazine.name}"
+  puts "Category: #{magazine.category}"
+  puts "Article Titles: #{magazine.article_titles}"
+  puts "Contributors: #{magazine.contributors.map(&:name)}"
+else
+  puts "Magazine not found."
+end
+
+
+# get some information about an author
+puts "Author: #{author1.name}"
+puts "Articles: #{author1.articles.map(&:title)}"
+puts "Magazines: #{author1.magazines.map(&:name)}"
+puts "Topic Areas: #{author1.topic_areas}"
+puts "Contributing Authors: #{magazine.contributing_authors.map(&:name)}"
